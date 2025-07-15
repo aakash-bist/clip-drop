@@ -1,0 +1,15 @@
+<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Base for the 'cache' or storage box - slightly more rounded corners -->
+    <rect x="2" y="4" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+
+    <!-- Top part of a clipboard or document, representing the 'clip' - slightly more pronounced -->
+    <rect x="5" y="1.5" width="6" height="3.5" rx="1.5" fill="currentColor"/>
+    <!-- Small line on the 'clip' to suggest the clip mechanism -->
+    <path d="M8 1.5V4" stroke="white" stroke-width="1" stroke-linecap="round"/>
+
+    <!-- Content lines inside the box - slightly varied lengths for visual interest -->
+    <path d="M4 7H11" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M4 9H10" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M4 11H9" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+</svg>
+

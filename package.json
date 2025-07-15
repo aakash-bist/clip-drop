@@ -1,0 +1,113 @@
+{
+  "name": "clip-drop",
+  "displayName": "clip-drop",
+  "publisher": "AakashBist",
+  "description": "A modern drop-zone and clipboard manager ",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:clip-drop.snippets",
+    "onCommand:clip-drop.addNew"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "clip-drop",
+          "title": "Clipboard Dump",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "clip-drop": [
+        {
+          "id": "clip-drop.treeSnippets",
+          "name": "Snippets",
+          "when": "true",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "clip-drop.addTreeSnippet",
+        "title": "Paste",
+        "icon": "$(add)"
+      },
+      {
+        "command": "clip-drop.copyTreeSnippet",
+        "title": "Copy",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "clip-drop.deleteTreeSnippet",
+        "title": "Delete",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "clip-drop.clearAllTreeSnippets",
+        "title": "Delete All",
+        "icon": "$(trash)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "clip-drop.addTreeSnippet",
+          "when": "view == clip-drop.treeSnippets",
+          "group": "navigation",
+          "icon": "$(paste)"
+        },
+        {
+          "command": "clip-drop.clearAllTreeSnippets",
+          "when": "view == clip-drop.treeSnippets",
+          "group": "navigation",
+          "icon": "$(trash)"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "clip-drop.copyTreeSnippet",
+          "when": "view == clip-drop.treeSnippets && viewItem == snippet",
+          "group": "inline"
+        },
+        {
+          "command": "clip-drop.deleteTreeSnippet",
+          "when": "view == clip-drop.treeSnippets && viewItem == snippet",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.0.13",
+    "@types/vscode": "^1.80.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.25.6",
+    "eslint": "^9.31.0",
+    "typescript": "^5.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aakash-bist/clip-drop.git"
+  }
+}
