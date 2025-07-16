@@ -3,7 +3,7 @@
   "displayName": "clip-drop",
   "publisher": "AakashBist",
   "description": "A modern drop-zone and clipboard manager ",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -20,7 +20,7 @@
       "activitybar": [
         {
           "id": "clip-drop",
-          "title": "Clipboard Dump",
+          "title": "Clip Drop",
           "icon": "media/icon.svg"
         }
       ]
@@ -29,7 +29,13 @@
       "clip-drop": [
         {
           "id": "clip-drop.treeSnippets",
-          "name": "Snippets",
+          "name": "Saved Snippets",
+          "when": "true",
+          "icon": "media/icon.svg"
+        },
+        {
+          "id": "clip-drop.sessionSnippets",
+          "name": "Clipboard History",
           "when": "true",
           "icon": "media/icon.svg"
         }
@@ -55,6 +61,41 @@
         "command": "clip-drop.clearAllTreeSnippets",
         "title": "Delete All",
         "icon": "$(trash)"
+      },
+      {
+        "command": "clip-drop.copySessionSnippet",
+        "title": "Copy",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "clip-drop.deleteSessionSnippet",
+        "title": "Delete",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "clip-drop.clearAllSessionSnippets",
+        "title": "Delete All",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "clip-drop.clearSessionSnippetSearch",
+        "title": "Clear Search",
+        "icon": "$(close)"
+      },
+      {
+        "command": "clip-drop.filterSessionSnippets",
+        "title": "Filter Session Snippets",
+        "icon": "$(search)"
+      },
+      {
+        "command": "clip-drop.filterTreeSnippets",
+        "title": "Filter Snippets",
+        "icon": "$(search)"
+      },
+      {
+        "command": "clip-drop.clearTreeSnippetSearch",
+        "title": "Clear Search",
+        "icon": "$(close)"
       }
     ],
     "menus": {
@@ -70,6 +111,36 @@
           "when": "view == clip-drop.treeSnippets",
           "group": "navigation",
           "icon": "$(trash)"
+        },
+        {
+          "command": "clip-drop.filterTreeSnippets",
+          "when": "view == clip-drop.treeSnippets && treeSnippetSearchActive == false",
+          "group": "navigation",
+          "icon": "$(search)"
+        },
+        {
+          "command": "clip-drop.clearTreeSnippetSearch",
+          "when": "view == clip-drop.treeSnippets && treeSnippetSearchActive == true",
+          "group": "navigation",
+          "icon": "$(close)"
+        },
+        {
+          "command": "clip-drop.filterSessionSnippets",
+          "when": "view == clip-drop.sessionSnippets && sessionSnippetSearchActive == false",
+          "group": "navigation",
+          "icon": "$(search)"
+        },
+        {
+          "command": "clip-drop.clearSessionSnippetSearch",
+          "when": "view == clip-drop.sessionSnippets && sessionSnippetSearchActive == true",
+          "group": "navigation",
+          "icon": "$(close)"
+        },
+        {
+          "command": "clip-drop.clearAllSessionSnippets",
+          "when": "view == clip-drop.sessionSnippets",
+          "group": "navigation",
+          "icon": "$(trash)"
         }
       ],
       "view/item/context": [
@@ -81,6 +152,16 @@
         {
           "command": "clip-drop.deleteTreeSnippet",
           "when": "view == clip-drop.treeSnippets && viewItem == snippet",
+          "group": "inline"
+        },
+        {
+          "command": "clip-drop.copySessionSnippet",
+          "when": "view == clip-drop.sessionSnippets && viewItem == sessionSnippet",
+          "group": "inline"
+        },
+        {
+          "command": "clip-drop.deleteSessionSnippet",
+          "when": "view == clip-drop.sessionSnippets && viewItem == sessionSnippet",
           "group": "inline"
         }
       ]
